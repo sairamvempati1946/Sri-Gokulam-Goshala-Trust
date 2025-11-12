@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Festivals - Sri Gokulam Goshala Trust</title>
+    <link rel="icon" type="image/x-icon" href="./Sri Gokulam Goshala Trust Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b4513;
+            --secondary: #DAA520;
+            --accent: #228B22;
+            --light: #FFF8DC;
+            --dark: #2F4F4F;
+            --text: #333333;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: var(--white);
+            padding: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .logo h1 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 800;
+            white-space: nowrap;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffffff, #fff8dc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 10px 16px;
+            border-radius: 8px;
+            position: relative;
+            white-space: nowrap;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:not(.nav-donate-btn)::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav a:not(.nav-donate-btn):hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        nav a:not(.nav-donate-btn):hover::before {
+            width: 80%;
+        }
+
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a.active::before {
+            width: 80%;
+        }
+
+        /* Enhanced Donate Button Styles */
+        .nav-donate-btn {
+            background: linear-gradient(135deg, var(--secondary), #ffd700);
+            color: var(--dark) !important;
+            padding: 12px 24px !important;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-left: 15px;
+            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-donate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .nav-donate-btn:hover {
+            background: linear-gradient(135deg, #ffd700, var(--secondary));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.6);
+            color: var(--dark) !important;
+            text-decoration: none;
+        }
+
+        .nav-donate-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-donate-btn.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(218, 165, 32, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(218, 165, 32, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(218, 165, 32, 0);
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            nav a {
+                padding: 8px 12px;
+            }
+            
+            .nav-donate-btn {
+                padding: 10px 18px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 0;
+            }
+
+            .logo {
+                width: auto;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                text-align: center;
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: linear-gradient(135deg, var(--primary), var(--dark));
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                padding: 20px 0;
+                border-radius: 0 0 15px 15px;
+            }
+
+            nav ul.show {
+                display: flex;
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                width: 100%;
+                text-align: left;
+                border-radius: 0;
+                justify-content: flex-start;
+            }
+
+            nav a:not(.nav-donate-btn)::before {
+                display: none;
+            }
+
+            .nav-donate-btn {
+                margin: 15px 20px 0;
+                width: calc(100% - 40px);
+                justify-content: center;
+                border-radius: 30px;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0;
+            }
+            
+            .logo {
+                gap: 10px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .mobile-menu {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Modified Hero Section */
+        .events-hero {
+            background: linear-gradient(rgba(139, 69, 19, 0), rgba(139, 69, 19, 0));
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 120px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .image-placeholder {
+            flex: 1;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.03);
+            border-color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .placeholder-content {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .placeholder-content i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--secondary);
+        }
+
+        .placeholder-content span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .text-content {
+            flex: 1.5;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .text-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .text-content p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0.95;
+        }
+
+        /* Mobile Responsive for Hero Section */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .image-placeholder {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .text-content {
+                order: -1;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(30px, 5vw, 50px);
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background-color: var(--white);
+        }
+
+        .impact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .impact-card {
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .impact-card h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .impact-card p {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Festivals Section */
+        .festivals-section {
+            background-color: var(--light);
+        }
+
+        .festivals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .festival-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .festival-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .festival-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .festival-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .festival-card:hover .festival-image img {
+            transform: scale(1.1);
+        }
+
+        .festival-header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .festival-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .festival-header .date {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .festival-body {
+            padding: 25px;
+        }
+
+        .festival-body p {
+            margin-bottom: 20px;
+        }
+
+        .festival-activities {
+            background-color: rgba(139, 69, 19, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+
+        .festival-activities:hover {
+            transform: translateY(-5px);
+        }
+
+        .festival-activities h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .festival-activities ul {
+            list-style: none;
+        }
+
+        .festival-activities li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .festival-activities li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            background-color: var(--white);
+        }
+
+        .programs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .program-card h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .program-card p {
+            margin-bottom: 20px;
+        }
+
+        .program-details {
+            background-color: rgba(139, 69, 19, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+
+        .program-details:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-details h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .program-details ul {
+            list-style: none;
+        }
+
+        .program-details li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .program-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--light);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            height: 500px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Join Section */
+        .join-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+        }
+
+        .join-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
+        .join-text {
+            font-size: 1.1rem;
+        }
+
+        .join-text p {
+            margin-bottom: 20px;
+        }
+
+        .event-info {
+            background-color: var(--white);
+            color: var(--text);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .event-info:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .event-info ul {
+            list-style: none;
+        }
+
+        .event-info li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .event-info li i {
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .schedule {
+            margin-top: 25px;
+        }
+
+        .schedule h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .schedule ul {
+            list-style: none;
+        }
+
+        .schedule li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .schedule li i {
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), #ffd700);
+            color: var(--dark);
+            padding: clamp(12px, 2vw, 16px) clamp(25px, 4vw, 35px);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #ffd700, var(--secondary));
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(218, 165, 32, 0.6);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .festivals-container,
+            .programs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .impact-card,
+            .festival-card,
+            .program-card {
+                padding: 20px;
+            }
+        }
+
+        
+
+        @media (max-width: 480px) {
+            .events-hero {
+                padding: 80px 0;
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
+        }
+        .site-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(90deg, #8b4513, #c57b00);
+  padding: 15px 25px;
+  color: #fff;
+  border-bottom: 3px solid #ffd700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.header-logo img {
+  height: 60px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.header-text h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.header-text .tagline {
+  font-size: 0.95rem;
+  margin-top: 3px;
+  font-weight: 400;
+  color: #ffebc4;
+  letter-spacing: 0.5px;
+  font-style: italic;
+}
+.logo-img1 {
+  width: 80px;              /* adjust size as needed */
+  height: 80px;
+  border-radius: 50%;       /* makes it circular */
+  object-fit: cover;        /* ensures the image fits inside the circle */
+  border: 3px solid #ffd700; /* optional golden border for elegance */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3); /* soft shadow for depth */
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);   /* subtle hover zoom */
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div>
+                        <img src="./Sri Gokulam Goshala Trust Logo.png" alt="Sri Gokulam Goshala Trust Logo" class="logo-img1">
+                    </div>
+                   <div class="header-text">
+                    <h1>Sri Gokulam Goshala Trust</h1>
+                     <p class="tagline"> Serving Gau Mata • कृष्णं वंदे जगदगुरुम्.</p>
+                     </div>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#donate" class="nav-donate-btn pulse"><i class="fas fa-hand-holding-heart"></i> Donate Now</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modified Hero Section -->
+    <section class="events-hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="image-container">
+                <img src="./swastik.jpg" 
+                     alt="Festival Celebration with Cows" 
+                     class="hero-image">
+            </div>
+            <div class="text-content">
+                <h1>Divine Events & Sacred Festivals</h1>
+                <p>Join us in celebrating the sacred bond between humanity and our divine mother cows through spiritual festivals, community gatherings, and devotional ceremonies that connect hearts and souls.</p>
+            </div>
+            <div class="image-container">
+                <img src="./om.jpg" 
+                     alt="Cow Worship Ceremony" 
+                     class="hero-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.events-hero {
+    background: linear-gradient(rgba(139, 69, 19, 0), rgba(139, 69, 19, 0)), url('https://t3.ftcdn.net/jpg/04/19/34/24/360_F_419342418_pBHSf17ZBQn77E7z3OWcXrWfCuxZkc3Q.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 150px 0;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.image-container {
+    flex: 1;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.image-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover .hero-image {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 20px 15px 10px;
+    text-align: center;
+}
+
+.image-overlay span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.text-content {
+    flex: 1.5;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.text-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.text-content p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+}
+
+/* Mobile Responsive for Hero Section */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .image-container {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .text-content {
+        order: -1;
+    }
+}
+</style>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Celebration Impact</h2>
+                <p>Bringing communities together through divine festivals and sacred ceremonies</p>
+            </div>
+            <div class="impact-content">
+                <div class="impact-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>25+</h3>
+                    <p>Annual Festivals</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-users"></i>
+                    <h3>5,000+</h3>
+                    <p>Devotees Participated</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>50+</h3>
+                    <p>Community Programs</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>3</h3>
+                    <p>Festival Locations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Festivals Section -->
+    <section class="festivals-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sacred Festivals We Celebrate</h2>
+                <p>Experience the divine joy of traditional cow worship festivals and spiritual celebrations</p>
+            </div>
+            <div class="festivals-container">
+                <!-- Gopashtami -->
+                <div class="festival-card">
+                    <div class="festival-image">
+                        <img src="./gopashtami.jpeg" alt="Gopashtami Celebration">
+                    </div>
+                    <div class="festival-header">
+                        <h3>Gopashtami</h3>
+                        <div class="date">Kartik Shukla Ashtami</div>
+                    </div>
+                    <div class="festival-body">
+                        <p>The most auspicious day for cow worship, celebrating Lord Krishna's divine connection with cows. Our sacred mothers are worshipped with special rituals and offerings.</p>
+                        <div class="festival-activities">
+                            <h4>Activities:</h4>
+                            <ul>
+                                <li>Special cow worship rituals</li>
+                                <li>Traditional decorations</li>
+                                <li>Devotional singing and prayers</li>
+                                <li>Special feeding for all cows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Makar Sankranti -->
+                <div class="festival-card">
+                    <div class="festival-image">
+                        <img src="./sankranthi.jpeg" alt="Makar Sankranthi Celebration">
+                    </div>
+                    <div class="festival-header">
+                        <h3>Makar Sankranthi</h3>
+                        <div class="date">January 14th Annual</div>
+                    </div>
+                    <div class="festival-body">
+                        <p>Harvest festival honoring cows and bulls for their contribution to agriculture. Cows are painted with vibrant colors and adorned with traditional ornaments.</p>
+                        <div class="festival-activities">
+                            <h4>Activities:</h4>
+                            <ul>
+                                <li>Colorful cow decorations</li>
+                                <li>Traditional harvest rituals</li>
+                                <li>Community feast</li>
+                                <li>Kite flying celebration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Janmashtami -->
+                <div class="festival-card">
+                    <div class="festival-image">
+                        <img src="./janmashtami.png" alt="Janmashtami Celebration">
+                    </div>
+                    <div class="festival-header">
+                        <h3>Janmashtami</h3>
+                        <div class="date">Krishna Janma Celebration</div>
+                    </div>
+                    <div class="festival-body">
+                        <p>Celebrating Lord Krishna's birth with midnight prayers and cow blessings. The entire goshala is illuminated with diyas and decorated with flowers.</p>
+                        <div class="festival-activities">
+                            <h4>Activities:</h4>
+                            <ul>
+                                <li>Midnight prayers and kirtans</li>
+                                <li>Dahi Handi celebration</li>
+                                <li>Special cow blessings</li>
+                                <li>Traditional dance performances</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holi -->
+                <div class="festival-card">
+                    <div class="festival-image">
+                        <img src="./holi.jpeg" alt="Holi Celebration">
+                    </div>
+                    <div class="festival-header">
+                        <h3>Holi Celebration</h3>
+                        <div class="date">Festival of Colors</div>
+                    </div>
+                    <div class="festival-body">
+                        <p>Celebrating the divine play of colors with our sacred mothers. Natural organic colors are gently applied to cows as part of the festivities.</p>
+                        <div class="festival-activities">
+                            <h4>Activities:</h4>
+                            <ul>
+                                <li>Natural color celebration</li>
+                                <li>Traditional music and dance</li>
+                                <li>Community feast</li>
+                                <li>Cow blessing ceremony</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Akshaya Tritiya -->
+                <div class="festival-card">
+                    <div class="festival-image">
+                        <img src="./akshaya.jpeg" alt="Akshaya Tritiya Celebration">
+                    </div>
+                    <div class="festival-header">
+                        <h3>Akshaya Tritiya</h3>
+                        <div class="date">Auspicious Beginning</div>
+                    </div>
+                    <div class="festival-body">
+                        <p>The golden day for new beginnings and prosperity. Cows are worshipped for bringing abundance and good fortune to all devotees.</p>
+                        <div class="festival-activities">
+                            <h4>Activities:</h4>
+                            <ul>
+                                <li>Golden decorations</li>
+                                <li>Prosperity prayers</li>
+                                <li>Special feeding</li>
+                                <li>Community blessings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartik Purnima -->
+                <div class="festival-card">
+                    <div class="festival-image">
+                        <img src="./pournami.jpg" alt="Kartik Purnima Celebration">
+                    </div>
+                    <div class="festival-header">
+                        <h3>Kartik Purnima</h3>
+                        <div class="date">Full Moon Blessings</div>
+                    </div>
+                    <div class="festival-body">
+                        <p>Sacred full moon night dedicated to spiritual purification and cow blessings. Evening prayers under moonlight with special ceremonies.</p>
+                        <div class="festival-activities">
+                            <h4>Activities:</h4>
+                            <ul>
+                                <li>Moonlight prayers</li>
+                                <li>Oil lamp ceremony</li>
+                                <li>Special night feeding</li>
+                                <li>Meditation sessions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Festival Gallery</h2>
+                <p>Glimpses from our beautiful celebrations and community gatherings</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="./9.jpeg" alt="Festival Celebration">
+                </div>
+                <div class="gallery-item">
+                    <img src="./29.jpg" alt="Cow Worship">
+                </div>
+                <div class="gallery-item">
+                    <img src="./30.jpg" alt="Festival Celebration">
+                </div>
+                <div class="gallery-item">
+                    <img src="./31.jpg" alt="Cow Worship">
+                </div>
+                <div class="gallery-item">
+                    <img src="./52.jpg" alt="Community Gathering">
+                </div>
+                <div class="gallery-item">
+                    <img src="./22.jpg" alt="Traditional Rituals">
+                </div>
+                <div class="gallery-item">
+                    <img src="./25.jpg" alt="Devotional Singing">
+                </div>
+                <div class="gallery-item">
+                    <img src="./58.jpg" alt="Festival Decorations">
+                </div>
+                 <div class="gallery-item">
+                    <img src="./64.jpg" alt="Festival Decorations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Regular Community Programs</h2>
+                <p>Ongoing activities that bring our community together in service and devotion</p>
+            </div>
+            <div class="programs-container">
+                <!-- Daily Aarti -->
+                <div class="program-card">
+                    <h3>Daily Aarti & Prayers</h3>
+                    <p>Join us every morning and evening for beautiful cow aarti ceremonies. Experience the divine energy as we offer prayers, light incense, and sing devotional songs. Open to all devotees and families.</p>
+                    <div class="program-details">
+                        <h4>Program Details:</h4>
+                        <ul>
+                            <li><strong>Schedule:</strong> Daily Morning 6:30 AM & Evening 6:00 PM</li>
+                            <li><strong>Duration:</strong> 30 minutes each session</li>
+                            <li><strong>Location:</strong> All three goshala centers</li>
+                            <li><strong>Participation:</strong> Open to all, no registration required</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Educational Sessions -->
+                <div class="program-card">
+                    <h3>Educational Awareness Sessions</h3>
+                    <p>Weekly educational sessions about cow protection, sustainable agriculture, and spiritual significance of gau seva. Perfect for schools, colleges, and community groups.</p>
+                    <div class="program-details">
+                        <h4>Program Details:</h4>
+                        <ul>
+                            <li><strong>Schedule:</strong> Every Saturday 10:00 AM - 12:00 PM</li>
+                            <li><strong>Age Group:</strong> All ages welcome (special programs for children)</li>
+                            <li><strong>Registration:</strong> Call us to book group sessions</li>
+                            <li><strong>Features:</strong> Interactive sessions with practical demonstrations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Volunteer Days -->
+                <div class="program-card">
+                    <h3>Volunteer Service Days</h3>
+                    <p>Monthly volunteer opportunities to serve our divine mother cows. Participate in feeding, cleaning, and caring activities while learning about cow protection.</p>
+                    <div class="program-details">
+                        <h4>Program Details:</h4>
+                        <ul>
+                            <li><strong>Schedule:</strong> First Sunday of every month</li>
+                            <li><strong>Time:</strong> 8:00 AM - 12:00 PM</li>
+                            <li><strong>Activities:</strong> Feeding, cleaning, grooming, and healthcare</li>
+                            <li><strong>Registration:</strong> Required for planning purposes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join Our Sacred Celebrations</h2>
+                <p>Experience the divine joy of traditional festivals and connect with like-minded souls</p>
+            </div>
+            <div class="join-content">
+                <div class="join-text">
+                    <p>Every festival is an opportunity for spiritual growth and community bonding. Participate in the sacred mission of cow protection while experiencing the rich cultural heritage of India.</p>
+                    <p>Whether you join us for daily prayers, educational sessions, or grand festivals, you'll be part of a community dedicated to serving Gau Mata and preserving our spiritual traditions.</p>
+                    <a href="index.html#contact" class="btn">Contact Us to Participate</a>
+                </div>
+                <div class="event-info">
+                    <h3>Event Information</h3>
+                    <ul>
+                        <li><i class="fas fa-id-card"></i> <strong>Registration No:</strong> RGG1 NO 02/IV/2023</li>
+                        <li><i class="fab fa-whatsapp"></i> <strong>WhatsApp Updates:</strong> +91 812122224</li>
+                        <li><i class="fas fa-envelope"></i> <strong>Email:</strong> srigokulamgoshala@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 21-12//J, SAI NAGAR COLONY, KARIMNAGAR, Telangana</li>
+                    </ul>
+                    
+                    <div class="schedule">
+                        <h4>Regular Schedule</h4>
+                        <ul>
+                            <li><i class="fas fa-bell"></i> <strong>Daily Aarti:</strong> 6:30 AM & 6:00 PM</li>
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Educational Sessions:</strong> Every Saturday, 10:00 AM</li>
+                            <li><i class="fas fa-hands-helping"></i> <strong>Volunteer Days:</strong> First Sunday of every month</li>
+                            <li><i class="fas fa-calendar-check"></i> <strong>Special Festivals:</strong> As per Hindu calendar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sri Gokulam Goshala Trust</h3>
+                    <p>Dedicated to the protection and care of sacred cows, providing them with shelter, food, and medical attention through divine festivals and community programs.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/srigokulamgoshala?igsh=cXljbHNja3FlNmhk"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="events.html">Events & Festivals</a></li>
+                        <li><a href="index.html#gallery">Cow Gallery</a></li>
+                        <li><a href="index.html#donate">Donate Now</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bhagathnagar, Karimnagar</li>
+                        <li><i class="fas fa-phone"></i> +91 9121212234</li>
+                        <li><i class="fab fa-whatsapp"></i> +91 9121212234</li>
+                        <li><i class="fas fa-envelope"></i> info@gokulamgoshala.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sri Gokulam Goshala Trust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('nav ul');
+            
+            // Toggle mobile menu
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('show');
+                    }
+                });
+            });
+            
+            // Close mobile menu on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

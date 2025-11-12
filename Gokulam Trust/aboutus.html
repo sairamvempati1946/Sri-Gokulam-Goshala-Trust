@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sri Gokulam Goshala Trust</title>
+    <link rel="icon" type="image/x-icon" href="./Sri Gokulam Goshala Trust Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #DAA520;
+            --accent: #228B22;
+            --light: #FFF8DC;
+            --dark: #2F4F4F;
+            --text: #333333;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 5px;
+            background: var(--white);
+            padding: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .logo h1 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 800;
+            white-space: nowrap;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ffffff, #fff8dc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 10px 16px;
+            border-radius: 8px;
+            position: relative;
+            white-space: nowrap;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:not(.nav-donate-btn)::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        nav a:not(.nav-donate-btn):hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        nav a:not(.nav-donate-btn):hover::before {
+            width: 80%;
+        }
+
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a.active::before {
+            width: 80%;
+        }
+
+        /* Enhanced Donate Button Styles */
+        .nav-donate-btn {
+            background: linear-gradient(135deg, var(--secondary), #ffd700);
+            color: var(--dark) !important;
+            padding: 12px 24px !important;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-left: 15px;
+            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-donate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .nav-donate-btn:hover {
+            background: linear-gradient(135deg, #ffd700, var(--secondary));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.6);
+            color: var(--dark) !important;
+            text-decoration: none;
+        }
+
+        .nav-donate-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-donate-btn.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(218, 165, 32, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(218, 165, 32, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(218, 165, 32, 0);
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            nav a {
+                padding: 8px 12px;
+            }
+            
+            .nav-donate-btn {
+                padding: 10px 18px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 0;
+            }
+
+            .logo {
+                width: auto;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                text-align: center;
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: linear-gradient(135deg, var(--primary), var(--dark));
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                padding: 20px 0;
+                border-radius: 0 0 15px 15px;
+            }
+
+            nav ul.show {
+                display: flex;
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                width: 100%;
+                text-align: left;
+                border-radius: 0;
+                justify-content: flex-start;
+            }
+
+            nav a:not(.nav-donate-btn)::before {
+                display: none;
+            }
+
+            .nav-donate-btn {
+                margin: 15px 20px 0;
+                width: calc(100% - 40px);
+                justify-content: center;
+                border-radius: 30px;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0;
+            }
+            
+            .logo {
+                gap: 10px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .mobile-menu {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(139, 69, 19, 0.8), rgba(139, 69, 19, 0.8)), url('https://images.unsplash.com/photo-1543944167-56f7f16a7b8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .about-hero p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0.95;
+        }
+
+        /* Section Styles */
+        section {
+            padding: clamp(40px, 8vw, 80px) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(30px, 5vw, 50px);
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Foundation Section */
+        .foundation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .foundation-text {
+            font-size: 1.1rem;
+        }
+
+        .foundation-text p {
+            margin-bottom: 20px;
+        }
+
+        .foundation-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .foundation-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .foundation-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .foundation-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Founders Section */
+        .founders-section {
+            background-color: var(--white);
+        }
+
+        .founders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        .founder-card {
+            background-color: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .founder-header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .founder-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .founder-header .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .founder-body {
+            padding: 30px;
+        }
+
+        .founder-body p {
+            margin-bottom: 20px;
+        }
+
+        .contributions {
+            margin-top: 25px;
+        }
+
+        .contributions h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contributions ul {
+            list-style: none;
+        }
+
+        .contributions li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .contributions li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Mission Section */
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .mission-text {
+            font-size: 1.1rem;
+        }
+
+        .mission-text p {
+            margin-bottom: 20px;
+        }
+
+        .crisis-list {
+            background-color: rgba(139, 69, 19, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+
+        .crisis-list:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .crisis-list h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .crisis-list ul {
+            list-style: none;
+        }
+
+        .crisis-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .crisis-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .mission-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .mission-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .mission-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Expansion Section */
+        .expansion-section {
+            background-color: var(--white);
+        }
+
+        .expansion-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .expansion-text {
+            font-size: 1.1rem;
+        }
+
+        .expansion-text p {
+            margin-bottom: 20px;
+        }
+
+        .expansion-list {
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+
+        .expansion-list:hover {
+            transform: translateY(-5px);
+        }
+
+        .expansion-list h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .expansion-list ul {
+            list-style: none;
+        }
+
+        .expansion-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .expansion-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .expansion-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .expansion-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .expansion-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .expansion-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), #ffd700);
+            color: var(--dark);
+            padding: clamp(12px, 2vw, 16px) clamp(25px, 4vw, 35px);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #ffd700, var(--secondary));
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(218, 165, 32, 0.6);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .foundation-content,
+            .mission-content,
+            .expansion-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .founders-container {
+                grid-template-columns: 1fr;
+            }
+
+            .foundation-image img {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 80px 0;
+            }
+
+            .founder-card,
+            .crisis-list {
+                padding: 20px;
+            }
+
+            .foundation-image img {
+                height: 300px;
+            }
+        }
+        .site-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(90deg, #8b4513, #c57b00);
+  padding: 15px 10px;
+  color: #fff;
+  border-bottom: 3px solid #ffd700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.header-logo img {
+  height: 60px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.header-text h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.header-text .tagline {
+  font-size: 0.95rem;
+  margin-top: 0.0002px;
+  font-weight: 400;
+  color: #ffebc4;
+  letter-spacing: 0.5px;
+  font-style: italic;
+}
+.logo-img1 {
+  width: 80px;              /* adjust size as needed */
+  height: 80px;
+  border-radius: 50%;       /* makes it circular */
+  object-fit: cover;        /* ensures the image fits inside the circle */
+  border: 3px solid #ffd700; /* optional golden border for elegance */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3); /* soft shadow for depth */
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);   /* subtle hover zoom */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Enhanced Header -->
+     <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div>
+                         <img src="./Sri Gokulam Goshala Trust Logo.png" class="logo-img1" alt="Sri Gokulam Goshala Trust Logo">
+                    </div>
+                    <div class="header-text">
+                    <h1>Sri Gokulam Goshala Trust</h1>
+                     <p class="tagline"> Serving Gau Mata • कृष्णं वंदे जगदगुरुम्.</p>
+                     </div>
+                </div>
+
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html#home"> Home</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#donate" class="nav-donate-btn pulse"><i class="fas fa-hand-holding-heart"></i> Donate Now</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modified Hero Section -->
+    <section class="events-hero">
+    <div class="container">
+        <div class="hero-content">
+            
+            <div class="text-content">
+                <h1>About Sri Gokulam Goshala</h1>
+                <p>A Sacred Journey of Compassion, Protection, and Divine Service</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.events-hero {
+    background: linear-gradient(rgba(169, 74, 7, 0), rgba(139, 69, 19, 0)), url('https://indiancattle.com/wp-content/uploads/2019/01/Gaushala.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 255px 0;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.image-container {
+    flex: 1;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+.image-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover .hero-image {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 20px 15px 10px;
+    text-align: center;
+}
+
+.image-overlay span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.text-content {
+    flex: 1.5;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.text-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.text-content p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+}
+
+/* Mobile Responsive for Hero Section */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .image-container {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .text-content {
+        order: -1;
+    }
+}
+</style>
+    <!-- Foundation Section -->
+    <section id="foundation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Sacred Foundation</h2>
+            </div>
+            <div class="foundation-content">
+                <div class="foundation-text">
+                    <p>Sri Gokulam Goshala stands as a beacon of hope for cows across Telangana. Founded in 2025, our trust embodies the ancient Indian principles of <strong>Ahimsa</strong> (non-violence), <strong>Karuna</strong> (compassion), and <strong>Gau Seva</strong> (cow service).</p>
+                    <p>In the sacred texts of Hinduism, cows are revered as <strong>Gau Mata (Mother Cow)</strong> - divine beings symbolizing gentleness, generosity, abundance, and purity. The cow is considered the earthly embodiment of all gods and goddesses.</p>
+                    <p>Our trust was born from the urgent realization that these sacred beings, who have served humanity selflessly for millennia, are now facing unprecedented challenges in our rapidly modernizing world.</p>
+                </div>
+                <div class="foundation-image">
+                    <img src="./2.jpg" alt="Sacred Cows at Goshala">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section class="founders-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Sacred Founders</h2>
+            </div>
+            <div class="founders-container">
+                <!-- Founder 1 -->
+                <div class="founder-card">
+                    <div class="founder-header">
+                        <h3>Shri Sundilla Banaiah</h3>
+                        <div class="title">Founder & President</div>
+                    </div>
+                    <div class="founder-body">
+                        <p>A dedicated retired officer from Singerani Collieries, Shri Sundilla Banaiah's journey towards cow protection began during his childhood. In his young age he used to help his father in the farm fields. Back in the day his father owned many cows and bulls which were used in the fields. Compassionate motherly natured cows were a part of their life.</p>
+                        <p>However, in his adulthood due to his professional obligations he could not continue the gorsewa as he did in his childhood. He witnessed the heartbreaking sight of cows on roadsides in urban localities, their eyes filled with pain and betrayal from the very humans they had served.</p>
+                        <p>After retirement in 2015, instead of settling into a comfortable life, he made a life-changing decision. Using his entire provident fund and pension savings, he leased a small piece of land and purchased the first batch of 12 cows.</p>
+                        <p>Since 2015 when the service was started without any documentation and now after the number of cows reached 158* unable to bear the crisis, had gone for registration of trust in April 2025, under the name of "SRI GOKULAM GOSHALA TRUST". The trust is formed so that many kind-hearted people who have love and affection towards cows can become part of this noble cause by the way they can support within their limits.</p>
+                    </div>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="founder-card">
+                    <div class="founder-header">
+                        <h3>Smt. Sundilla Susheela</h3>
+                        <div class="title">Co-Founder & Treasurer</div>
+                    </div>
+                    <div class="founder-body">
+                        <p>A compassionate homemaker and devoted mother, Smt. Sundilla Susheela comes from agricultural background family. She also has a childhood growing among many cows. She being a devoted wife accompanied Shri Sundilla Banaiah in the goseva.</p>
+                        <div class="contributions">
+                            <h4>Her Key Contributions:</h4>
+                            <ul>
+                                <li><strong>Nutrition Management:</strong> Plans balanced diet for each cow based on age, health condition, and nutritional needs</li>
+                                <li><strong>Health Monitoring:</strong> Maintains detailed health records and identifies early signs of illness</li>
+                                <li><strong>Volunteer Coordination:</strong> Trains and manages volunteers in proper animal care techniques</li>
+                                <li><strong>Financial Management:</strong> Maintains transparent accounts and donor communications</li>
+                                <li><strong>Emergency Response:</strong> Coordinates rescue operations and emergency medical care</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Current Crisis</h2>
+            </div>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <p>To provide lifelong sanctuary to elderly cows while creating awareness about the importance of cow protection in maintaining ecological balance, cultural values, and spiritual well-being of society.</p>
+                    
+                    <div class="crisis-list">
+                        <h4>Current Crisis</h4>
+                        <p>The major crisis we face today is the <strong>lack of proper shelter</strong>. Presently the cows are sheltered at a leased small piece of land.</p>
+                        <ul>
+                            <li>During rainy season the space congestion causing swamp in the land making Cows more prone to infections and diseases</li>
+                            <li>During the summer the excessive heat causing health issues</li>
+                            <li>Being stagnant in a congested place for a long time is making it difficult for the cows to conceive and causing mastitis infection</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mission-image">
+                    <img src="./50.jpg" alt="Cows in current shelter">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion Section -->
+    <section class="expansion-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Expansion Plans</h2>
+                <p>Building a Sustainable Future for Sacred Cows</p>
+            </div>
+            <div class="expansion-content">
+                <div class="expansion-text">
+                    <div class="expansion-list">
+                        <h4>Our Vision for Growth:</h4>
+                        <ul>
+                            <li>Purchase 20 acres of permanent land: Secure a forever home for our sacred cows</li>
+                            <li>Build modern cattle shelters for 500+ cows: Weather-protected spacious facilities with proper ventilation</li>
+                            <li>Establish on-site veterinary hospital: Complete medical care facility with qualified veterinarians</li>
+                            <li>Create organic farming unit using cow dung: Generate sustainable income through organic fertilizer production</li>
+                            <li>Set up goseva training center: Educate youth and volunteers about scientific cow care</li>
+                            <li>Develop sustainable income sources: Dairy products, biogas, organic farming to support goshala operations</li>
+                        </ul>
+                    </div>
+                    <p><strong>Why This Matters:</strong> With your support, we can transform Sri Gokulam Goshala from a temporary shelter into a permanent sanctuary that will serve thousands of cows for generations to come.</p>
+                </div>
+                <div class="expansion-image">
+                    <img src="./49.jpg" alt="Vision for future shelter">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Our Sacred Mission</h2>
+            <p>Your support can help us provide a permanent home for these divine beings and continue our service to Gau Mata</p>
+            <a href="index.html#donate" class="btn">Support Our Cause</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sri Gokulam Goshala Trust</h3>
+                    <p>Dedicated to the protection and care of sacred cows, providing them with shelter, food, and medical attention.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/srigokulamgoshala?igsh=cXljbHNja3FlNmhk"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#crisis">Current Crisis</a></li>
+                        <li><a href="index.html#impact">Donation Impact</a></li>
+                        <li><a href="index.html#donate">Donate Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bhagathnagar, Karimnagar</li>
+                        <li><i class="fas fa-phone"></i> +91 9121212234</li>
+                        <li><i class="fab fa-whatsapp"></i> +91 9121212234</li>
+                        <li><i class="fas fa-envelope"></i> info@gokulamgoshala.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sri Gokulam Goshala Trust. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('nav ul');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Toggle mobile menu
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                // Change icon based on menu state
+                const icon = this.querySelector('i');
+                if (navMenu.classList.contains('show')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('show');
+                        // Reset mobile menu icon
+                        const icon = mobileMenu.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    
+                    // Set active state
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL hash without page jump
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+            
+            // Close mobile menu on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('show');
+                    // Reset mobile menu icon
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Set active state based on scroll position
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                
+                // Update active nav link based on scroll position
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '0';
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                } else {
+                    header.style.padding = '0';
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                }
+            });
+            
+            // Initialize active state
+            const currentHash = window.location.hash || '#home';
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
